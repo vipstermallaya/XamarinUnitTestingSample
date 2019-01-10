@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:UnitTestingSample"
+             xmlns:viewModel="clr-namespace:UnitTestSample.Core.ViewModel;assembly=UnitTestSample.Core"
+             x:Class="UnitTestingSample.WeatherView"
+             Title="{Binding Title}"
+             
+             >
+    
+    <ContentPage.BindingContext>
+        <viewModel:WeatherViewModel />
+    </ContentPage.BindingContext>
+
+    <FlexLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AlignContent="SpaceEvenly"
+                AlignItems="Stretch" Direction="Column">
+        <!-- Place new controls here -->
+        <Label Text="Weather Today" 
+           HorizontalOptions="Center"
+           VerticalOptions="Start"
+           FlowDirection="LeftToRight"/>
+
+        <Grid>
+            <Grid.RowDefinitions >
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition> 
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label  Text="Location and Summary : " HorizontalOptions="Center"/>
+                <Label Text="{Binding Location}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label  Text="Temparature Today : " HorizontalOptions="Center"/>
+                <Label Text="{Binding CurrentTemparature}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label   Text="Temparature Max : " HorizontalOptions="Center"/>
+                <Label Text="{Binding MaxTemparature}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label  Text="Temparature Min : " HorizontalOptions="Center"/>
+                <Label Text="{Binding MinTemparature}"/>
+            </StackLayout>
+            <Label Grid.Row="4" Text="Units In " HorizontalOptions="Start"/>
+            <StackLayout Grid.Row="5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button Text="Celcius" HorizontalOptions="FillAndExpand" Command="{Binding ChangeToCelcius}" />
+                <Button Text="Kelvin" HorizontalOptions="FillAndExpand" Command="{Binding ChangeToKelvin}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="6" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button Text="Country Listing " HorizontalOptions="FillAndExpand" Command="{Binding CountryListing}" />
+            </StackLayout>
+        </Grid> 
+    </FlexLayout>
+    
+</ContentPage>
